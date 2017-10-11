@@ -27,7 +27,7 @@ const HomeHeading = (props) => {
 		<Row>
 		<Col span={20} offset={2}>
 			<div className="discription">{ props.description }</div>
-			<div className="discription"><span className="forsale"> Now for sale! </span> <span className="price"> { props.price } </span></div>
+			{/* <div className="discription"><span className="forsale"> Now for sale! </span> <span className="price"> { props.price } </span></div> */}
 		</Col>
 		</Row>
 	);

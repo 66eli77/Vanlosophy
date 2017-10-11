@@ -11,7 +11,8 @@
     "clean": "rimraf public/scripts",
     "delete-index-html": "rimraf public/index.html",
     "watch-react-static": "cross-env NODE_ENV=development webpack -w",
-    "build-react-static": "npm run clean && cross-env NODE_ENV=production webpack -p"
+    "build-react-static": "npm run clean && cross-env NODE_ENV=production webpack -p",
+    "deploy-static": "node scripts/deploy-S3.js"
   },
   "devDependencies": {
     "antd": "2.12.5",
@@ -40,7 +41,8 @@
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
     "webpack": "2.4.1",
-    "webpack-dev-server": "2.7.1"
+    "webpack-dev-server": "2.7.1",
+    "s3": "4.4.0"
   },
   "engines": {
     "node": "6.10.2"

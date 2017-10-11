@@ -1,0 +1,47 @@
+[
+  {
+    "Redirect": {
+      "HostName": "vanlosophy.com",
+      "HttpRedirectCode": "302",
+      "ReplaceKeyWith": ""
+    },
+    "Condition": {
+      "KeyPrefixEquals": "page2"
+    }
+  },
+  {
+    "Redirect": {
+      "HostName": "vanlosophy.com",
+      "HttpRedirectCode": "301",
+      "Protocol": "http",
+      "ReplaceKeyWith": "contact-us"
+    },
+    "Condition": {
+      "HttpErrorCodeReturnedEquals": "404",
+      "KeyPrefixEquals": "page5"
+    }
+  },
+  {
+    "Redirect": {
+      "HostName": "vanlosophy.com",
+      "HttpRedirectCode": "301",
+      "Protocol": "http",
+      "ReplaceKeyPrefixWith": "document/"
+    },
+    "Condition": {
+      "HttpErrorCodeReturnedEquals": "404",
+      "KeyPrefixEquals": "doc/"
+    }
+  },
+  {
+    "Redirect": {
+      "HostName": "www.getpostman.com",
+      "HttpRedirectCode": "301",
+      "Protocol": "https",
+      "ReplaceKeyPrefixWith": "press/"
+    },
+    "Condition": {
+      "KeyPrefixEquals": "postman"
+    }
+  }
+]
