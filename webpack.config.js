@@ -8,6 +8,7 @@ const APP_DIR = path.resolve(__dirname, 'src');
 const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 const ReactStaticPlugin = require('react-static-webpack-plugin');
 
@@ -95,6 +96,17 @@ const WebpackConfig = {
 			minChunks: Infinity,
 		}),
 
+		new HTMLWebpackPlugin({
+			inject: false,
+			filename: '200.html',
+			template: 'scripts/200.ejs',
+			minify: {
+				collapseBooleanAttributes: true,
+				removeComments: true,
+				collapseWhitespace: true,
+			}
+		}),
+
 		process.env.NODE_ENV !== 'production' ? () => {} : new webpack.optimize.UglifyJsPlugin({
 			beautify: false,
 			mangle: {
@@ -136,20 +148,20 @@ const WebpackConfig = {
 		extensions: [ '.js', '.json' ]
 	},
 
-	devServer: {
-	    publicPath: "/",
-	    contentBase: "./public",
-	    hot: true,
-	    proxy: {
-	      	'*': {
-	        	bypass: function(req, res, proxyOptions) {
-		      		if (req.headers.accept.indexOf('html') !== -1) {
-		        		return '/index.html';
-		    		}
-	      		}
-	    	},
-		},
-	},
+	// devServer: {
+	//     publicPath: "/",
+	//     contentBase: "./public",
+	//     hot: true,
+	//     proxy: {
+	//       	'*': {
+	//         	bypass: function(req, res, proxyOptions) {
+	// 	      		if (req.headers.accept.indexOf('html') !== -1) {
+	// 	        		return '/index.html';
+	// 	    		}
+	//       		}
+	//     	},
+	// 	},
+	// },
 
 };
 

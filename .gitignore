@@ -3,3 +3,6 @@ npm-debug.log
 node_modules/*
 public/scripts/*
 secret/*
+public/200.html
+public/__react-static-webpack-plugin__template.js.gz
+public/__react-static-webpack-plugin__routes.js.gz

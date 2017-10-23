@@ -7,7 +7,7 @@
   "description": "Vanlosophy static site (vanlosophy.com)",
   "main": "app.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack-dev-server",
+    "start": "node scripts/server.js",
     "clean": "rimraf public/scripts",
     "delete-index-html": "rimraf public/index.html",
     "watch-react-static": "cross-env NODE_ENV=development webpack -w",
@@ -31,6 +31,7 @@
     "eslint": "4.4.1",
     "eslint-loader": "1.9.0",
     "extract-text-webpack-plugin": "2.1.0",
+    "html-webpack-plugin": "^2.28.0",
     "node-sass": "4.5.3",
     "react": "15.6.1",
     "react-dom": "15.6.1",
