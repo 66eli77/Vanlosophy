@@ -19,27 +19,23 @@ const WebsiteRoutes = {
 		},
 		{
 			path: 'features',
-			indexRoute: {
-				getComponent(location, cb) {
-					DynamicImport(
-						import(/* webpackChunkName: "features" */'app/content/Features'),
-						cb,
-						'features'
-					);
-				}
-			},
+			getComponent(location, cb) {
+				DynamicImport(
+					import(/* webpackChunkName: "features" */'app/content/Features'),
+					cb,
+					'features'
+				);
+			}
 		},
 		{
-			path: 'contact-us',
-			indexRoute: {
-				getComponent(location, cb) {
-					DynamicImport(
-						import(/* webpackChunkName: "contact-us" */'app/content/ContactUs'),
-						cb,
-						'contact-us'
-					);
-				}
-			},
+			path: 'gallery',
+			getComponent(location, cb) {
+				DynamicImport(
+					import(/* webpackChunkName: "contact-us" */'app/content/Gallery'),
+					cb,
+					'gallery'
+				);
+			}
 		},
 		{
 			path: '*',

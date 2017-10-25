@@ -19,8 +19,8 @@ module.exports = [
 	},
 
 	{
-		url: 'contact-us',
-		title: 'Contact',
+		url: 'gallery',
+		title: 'Photos',
 		description: 'Want to get in touch with me? Enter the form below.',
 		keywords: 'Ram promaster, promaster, promaster 136, compervan, conversion, build out, van, vanlife',
 	},

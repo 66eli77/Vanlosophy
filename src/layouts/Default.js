@@ -11,10 +11,8 @@ const DefaultLayout = (props) => {
 
            	<Header />
 
-            <div className="page-content">
             <div className="container">
             	{ props.children }
-            </div>
             </div>
 
         </div>

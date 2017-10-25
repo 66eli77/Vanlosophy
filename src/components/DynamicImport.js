@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { message } from 'antd';
+// import { message } from 'antd';
 
 // empty scripts object, this keeps track of all the scripts that have been loaded dynamically.
 const scripts = {};
@@ -24,12 +24,12 @@ const DynamicImport = ( component, callback, script_name ) => {
 
 
 	const allLoaded = Object.keys(scripts).every( (k) => { return scripts[k] === true });
-	let loading_message = '';
+	// let loading_message = '';
 
-	if ( allPreviousLoaded ) { loading_message = message.loading( 'Loading content...', 0); }
+	// if ( allPreviousLoaded ) { loading_message = message.loading( 'Loading content...', 0); }
 
 	return component.then( response => {
-		if ( allPreviousLoaded ) { loading_message(); }
+		// if ( allPreviousLoaded ) { loading_message(); }
 		scripts[script_name] = true;
 		return callback( null, response.default );
 	})

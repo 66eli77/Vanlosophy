@@ -21,6 +21,33 @@ var s3 = require('s3'),
   promises = [],
   uploader;
 
+
+// Recursively list all files in a directory
+var walkSync = function(dir, filelist) {
+  var path = path || require('path'),
+    files = fs.readdirSync(dir);
+
+  filelist = filelist || [];
+
+  files.forEach(function(file) {
+    var filePath = path.join(dir, file);
+
+    if (fs.statSync(filePath).isDirectory()) {
+      filelist = walkSync(filePath, filelist);
+    }
+    else {
+      filePath.match(/\.html$/) &&
+        !filePath.match(/index\.html$/) &&
+        filelist.push(filePath);
+    }
+  });
+
+  return filelist;
+};
+
+
+
+
 // Create the s3 client & configure it
 console.log('Creating client...');
 client = s3.createClient({
@@ -72,6 +99,17 @@ promises.push(new Promise((resolve, reject) => {
     resolve();
   });
 }));
+
+
+// Remove the .html extension from files, the URL doesn't have the extension and so
+  // S3 won't serve these files unless we remove the extension
+console.log('Trimming extensions from html files...');
+walkSync(sourceDir).forEach(function (file) {
+  var rename = file.replace(/\.html$/i, '');
+
+  fs.renameSync(file, rename);
+  console.log(`  ${file} --> ${rename}`);
+});
 
 
 // update the objects in S3.
